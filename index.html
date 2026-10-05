@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Criamos projetos que unem estética, funcionalidade e identidade, com um olhar atento ao que torna cada espaço único."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <title>Atelier Norte — Arquitetura, interiores e experiências</title>
+    <!--
+      Este script roda antes do React para evitar um flash do tema errado.
+      Mantenha mode e default iguais a theme.mode e theme.default em src/data/content.js.
+    -->
+    <script>
+      ;(function () {
+        var mode = 'both'
+        var fallback = 'light'
+        var theme = mode === 'both' ? fallback : mode
+        try {
+          if (mode === 'both') {
+            var stored = localStorage.getItem('template-premium-theme')
+            if (stored === 'light' || stored === 'dark') theme = stored
+          }
+        } catch (error) {
+          theme = mode === 'both' ? fallback : mode
+        }
+        var root = document.documentElement
+        root.dataset.theme = theme
+        root.style.colorScheme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

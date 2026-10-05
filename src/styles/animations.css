@@ -1,0 +1,98 @@
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-animations='on'] [data-animate='load'] {
+    animation: rise 0.7s ease both;
+  }
+
+  html[data-animations='on'] [data-animate='reveal'] {
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html[data-animations='on'][data-reveal='ready'] [data-animate='reveal']:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  html[data-animations='on'] [data-animate='reveal'].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  html[data-animations='on'] .media-zoom img {
+    transition: transform 0.8s ease;
+  }
+
+  html[data-animations='on'] .media-zoom:hover img {
+    transform: scale(1.035);
+  }
+
+  html[data-animations='on'] .link-underline {
+    transition:
+      background-size 0.35s ease,
+      color 0.3s ease;
+  }
+
+  html[data-animations='on'] .pressable:active {
+    transform: translateY(1px);
+  }
+
+  html[data-animations='on'] body,
+  html[data-animations='on'] header,
+  html[data-animations='on'] section,
+  html[data-animations='on'] footer {
+    transition:
+      background-color 0.45s ease,
+      color 0.45s ease,
+      border-color 0.45s ease;
+  }
+
+  html[data-animations='on'] .quote-swap {
+    animation: rise 0.45s ease;
+  }
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+html[data-animations='off'] [data-animate='reveal'],
+html[data-animations='off'] [data-animate='load'] {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

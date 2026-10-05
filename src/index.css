@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+/*
+  Tokens do primeiro frame, espelhando theme.colors em src/data/content.js.
+  O JavaScript reaplica a paleta do content.js assim que o app abre.
+  Light e dark vêm do Figma. O Notion arredonda alguns hex; o arquivo visual prevalece.
+*/
+
+:root {
+  --background: #f5f3ee;
+  --surface: #ffffff;
+  --text: #151515;
+  --muted: #6f6f6f;
+  --accent: #a17c4a;
+  --border: #dedbd4;
+  --soft: #e9e5dc;
+  --on-accent: #f7f4ee;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --background: #0d0d0d;
+  --surface: #161616;
+  --text: #f2f0eb;
+  --muted: #9a9a9a;
+  --accent: #c49a63;
+  --border: #292929;
+  --soft: #20201e;
+  --on-accent: #f7f4ee;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'DM Serif Display', serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-soft: var(--soft);
+  --color-on-accent: var(--on-accent);
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+main section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1.5rem;
+  top: 1rem;
+  z-index: 60;
+  transform: translateY(-150%);
+  background: var(--text);
+  color: var(--background);
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  transform: none;
+}
